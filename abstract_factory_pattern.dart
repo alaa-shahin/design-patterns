@@ -8,36 +8,35 @@ void main() {
   stdout.writeln('Enter Your Card Number');
   String cardNumber = stdin.readLineSync();
   bankCode = cardNumber.substring(0,6);
-  IBank bank = bankFactory.getbank(bankCode);
+  IBank bank = bankFactory.getBank(bankCode);
   IPaymentCard payment = bankFactory.getPaymentCard('12');
   print(bank.withdraw());
   print(payment.getName());
-
 }
 
 abstract class IBank {
-   String withdraw();
+  String withdraw();
 }
 
-class BankA implements IBank{
-  String withdraw(){
+class BankA implements IBank {
+  String withdraw() {
     return 'your request is handling by BankA';
   }
 }
 
-class BankB implements IBank{
-  String withdraw(){
+class BankB implements IBank {
+  String withdraw() {
     return 'your request is handling by BankB';
   }
 }
 
 abstract class IBankFactory {
-  IBank getbank(String bankCode);
+  IBank getBank(String bankCode);
   IPaymentCard getPaymentCard(String cardNumber);
 }
 
 class BankFactory implements IBankFactory {
-  IBank getbank(String bankcode){
+  IBank getBank(String bankcode) {
     switch(bankcode){
       case '123456':
         return BankA();
@@ -49,8 +48,8 @@ class BankFactory implements IBankFactory {
     }
   }
 
-  IPaymentCard getPaymentCard(String cardNumber){
-    switch(cardNumber){
+  IPaymentCard getPaymentCard(String cardNumber) {
+    switch(cardNumber) {
       case '12':
         return VisaCard();
       case '34':
@@ -77,5 +76,3 @@ class MasterCard implements IPaymentCard {
     return 'Master Card';
   }
 }
-
-

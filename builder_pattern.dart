@@ -4,12 +4,12 @@ void main() {
   director.construct(carBuilder);
   Product car = carBuilder.getVehicle();
   print(car.show());
-  }
+}
 
 class  Product {
   List parts = [];
   
-  void add(String part){
+  void add(String part) {
     parts.add(part);
   }
   
@@ -27,12 +27,12 @@ class Car implements IBuilder {
   String brandName;
   Product product;
   
-  Car(String brand){
+  Car(String brand) {
     this.brandName = brand;
     product = Product();
   }
   
-  void startUpOperations(){
+  void startUpOperations() { 
     product.add('Car Model Name: ${this.brandName}');
   }
   
@@ -40,11 +40,11 @@ class Car implements IBuilder {
     product.add('Bode of car was added');
   }
   
-  void insertWheels(){
+  void insertWheels() {
     product.add('Wheels was added');
   }
   
-  void addHeadLights(){
+  void addHeadLights() {
     product.add('HeadLights was added');
   }
   
@@ -64,7 +64,7 @@ abstract class IBuilder {
 class Director {
   IBuilder builder;
   
-  void construct(IBuilder builder){
+  void construct(IBuilder builder) {
     this.builder = builder;
     builder.startUpOperations();
     builder.buildBody();

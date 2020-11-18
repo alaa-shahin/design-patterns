@@ -20,11 +20,11 @@ class Counter {
   static  Counter _instance = null;
   
   //private constructor.
-  Counter._(){} 
+  Counter._() {} 
   
   //create static method to return object.
-  static Counter getInstance(){
-    if(_instance == null){
+  static Counter getInstance() {
+    if(_instance == null) {
       _instance = new Counter._();
     }
     return _instance;
@@ -34,5 +34,3 @@ class Counter {
     count++;
   }
 }
-
-
