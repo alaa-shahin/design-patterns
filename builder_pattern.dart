@@ -6,17 +6,17 @@ void main() {
   print(car.show());
 }
 
-class  Product {
+class Product {
   List parts = [];
-  
+
   void add(String part) {
     parts.add(part);
   }
-  
+
   String show() {
     StringBuffer sb = StringBuffer();
-    sb.writeln('Product compenents are:');
-    for(String part in parts){
+    sb.writeln('Product components are:');
+    for (String part in parts) {
       sb.writeln(part);
     }
     return sb.toString();
@@ -24,30 +24,30 @@ class  Product {
 }
 
 class Car implements IBuilder {
-  String brandName;
-  Product product;
-  
+  late String brandName;
+  late Product product;
+
   Car(String brand) {
     this.brandName = brand;
     product = Product();
   }
-  
-  void startUpOperations() { 
+
+  void startUpOperations() {
     product.add('Car Model Name: ${this.brandName}');
   }
-  
+
   void buildBody() {
     product.add('Bode of car was added');
   }
-  
+
   void insertWheels() {
     product.add('Wheels was added');
   }
-  
+
   void addHeadLights() {
     product.add('HeadLights was added');
   }
-  
+
   Product getVehicle() {
     return product;
   }
@@ -62,8 +62,8 @@ abstract class IBuilder {
 }
 
 class Director {
-  IBuilder builder;
-  
+  late IBuilder builder;
+
   void construct(IBuilder builder) {
     this.builder = builder;
     builder.startUpOperations();

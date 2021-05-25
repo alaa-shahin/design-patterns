@@ -2,12 +2,12 @@ import 'dart:io';
 
 void main() {
   String bankCode;
-  
+
   BankFactory bankFactory = BankFactory();
-  
+
   stdout.writeln('Enter Your Card Number');
-  String cardNumber = stdin.readLineSync();
-  bankCode = cardNumber.substring(0,6);
+  String cardNumber = stdin.readLineSync()!;
+  bankCode = cardNumber.substring(0, 6);
   IBank bank = bankFactory.getBank(bankCode);
   IPaymentCard payment = bankFactory.getPaymentCard('12');
   print(bank.withdraw());
@@ -36,8 +36,8 @@ abstract class IBankFactory {
 }
 
 class BankFactory implements IBankFactory {
-  IBank getBank(String bankcode) {
-    switch(bankcode){
+  IBank getBank(String bankCode) {
+    switch (bankCode) {
       case '123456':
         return BankA();
       case '111111':
@@ -49,7 +49,7 @@ class BankFactory implements IBankFactory {
   }
 
   IPaymentCard getPaymentCard(String cardNumber) {
-    switch(cardNumber) {
+    switch (cardNumber) {
       case '12':
         return VisaCard();
       case '34':

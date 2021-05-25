@@ -2,12 +2,12 @@ import 'dart:io';
 
 void main() {
   String bankCode;
-  
+
   BankFactory bankFactory = BankFactory();
-  
+
   stdout.writeln('Enter Your Card Number');
-  String cardNumber = stdin.readLineSync();
-  bankCode = cardNumber.substring(0,6);
+  String cardNumber = stdin.readLineSync()!;
+  bankCode = cardNumber.substring(0, 6);
   IBank bank = bankFactory.getBank(bankCode);
   print(bank.withdraw());
 }
@@ -16,13 +16,13 @@ abstract class IBank {
   String withdraw();
 }
 
-class BankA implements IBank{
+class BankA implements IBank {
   String withdraw() {
     return 'your request is handling by BankA';
   }
 }
 
-class BankB implements IBank{
+class BankB implements IBank {
   String withdraw() {
     return 'your request is handling by BankB';
   }
@@ -33,8 +33,8 @@ abstract class IBankFactory {
 }
 
 class BankFactory implements IBankFactory {
-  IBank getBank(String bankcode) {
-    switch(bankcode) {
+  IBank getBank(String bankCode) {
+    switch (bankCode) {
       case '123456':
         return BankA();
       case '111111':
